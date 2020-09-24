@@ -1,0 +1,185 @@
+{
+  "Orders_DS": {
+    "action": "sfdcRegister",
+    "parameters": {
+      "source": "AugCust_Log",
+      "alias": "Orders_DS",
+      "name": "Orders_DS"
+    }
+  },
+  "Orders": {
+    "action": "edgemart",
+    "parameters": {
+      "alias": "PS_Order"
+    }
+  },
+  "Warehouse": {
+    "action": "edgemart",
+    "parameters": {
+      "alias": "PS_Warehouse_Details"
+    }
+  },
+  "Customer": {
+    "action": "edgemart",
+    "parameters": {
+      "alias": "AmeriCold_Customer_Details"
+    }
+  },
+  "Americold_DS": {
+    "action": "sfdcRegister",
+    "parameters": {
+      "source": "AugWH_Cust",
+      "alias": "Americold_DS",
+      "name": "Americold_DS"
+    }
+  },
+  "Truck": {
+    "action": "edgemart",
+    "parameters": {
+      "alias": "Truck_Details"
+    }
+  },
+  "Logistic": {
+    "action": "edgemart",
+    "parameters": {
+      "alias": "PS_Truck_Logistics"
+    }
+  },
+  "AugTruck_Log": {
+    "action": "augment",
+    "parameters": {
+      "operation": "LookupSingleValue",
+      "relationship": "Truck_Log",
+      "left": "Logistic",
+      "right": "Truck",
+      "left_key": [
+        "Truck_ID"
+      ],
+      "right_key": [
+        "Truck_ID"
+      ],
+      "right_select": [
+        "Container_Capacity",
+        "Driver_ID",
+        "Driver_Name",
+        "Warehouse_IDs"
+      ]
+    }
+  },
+  "AugWH_INV": {
+    "action": "augment",
+    "parameters": {
+      "operation": "LookupSingleValue",
+      "relationship": "WH",
+      "left": "Inventory",
+      "right": "Warehouse",
+      "left_key": [
+        "Warehouse_IDs"
+      ],
+      "right_key": [
+        "WarehouseID"
+      ],
+      "right_select": [
+        "Region",
+        "Warehouse_Name"
+      ]
+    }
+  },
+  "AugCust_Log": {
+    "action": "augment",
+    "parameters": {
+      "operation": "LookupSingleValue",
+      "relationship": "Cust_Log",
+      "left": "AugCustomer_Orders",
+      "right": "AugTruck_Log",
+      "left_key": [
+        "Warehouse_IDs",
+        "Ordered_ID"
+      ],
+      "right_key": [
+        "Warehouse_IDs",
+        "Ordered_ID"
+      ],
+      "right_select": [
+        "Truck_Log.Driver_Name",
+        "Truck_Log.Container_Capacity",
+        "Arrival_Date",
+        "Dispatch_Date",
+        "From_Source",
+        "To_Destination",
+        "Truck_ID",
+        "Truck_Log.Driver_ID",
+        "Truck_Log.Warehouse_IDs",
+        "Warehouse_IDs",
+        "Ordered_ID"
+      ]
+    }
+  },
+  "AugWH_Cust": {
+    "action": "augment",
+    "parameters": {
+      "operation": "LookupSingleValue",
+      "relationship": "AugWH_Cust",
+      "left": "AugCust_Log",
+      "right": "AugWH_INV",
+      "left_key": [
+        "Warehouse_IDs"
+      ],
+      "right_key": [
+        "Warehouse_IDs"
+      ],
+      "right_select": [
+        "Available_Stock",
+        "Free_Space_Pallets",
+        "Initial_Stock",
+        "Product_IDs",
+        "Product_Name",
+        "Relative_Humadity_Percentage",
+        "Section_Capacity",
+        "Section_IDs",
+        "ShelfLife_Days",
+        "Stock_IN",
+        "Stock_Out",
+        "Temaparature_Degree_Fahrenheit",
+        "Temparature_Zone",
+        "WH.Region",
+        "WH.Warehouse_Name",
+        "Warehouse_IDs"
+      ]
+    }
+  },
+  "Warehouse_DS": {
+    "action": "sfdcRegister",
+    "parameters": {
+      "source": "AugWH_INV",
+      "alias": "Warehouse_DS",
+      "name": "Warehouse_DS"
+    }
+  },
+  "AugCustomer_Orders": {
+    "action": "augment",
+    "parameters": {
+      "operation": "LookupSingleValue",
+      "relationship": "Cust_Ord",
+      "left": "Orders",
+      "right": "Customer",
+      "left_key": [
+        "Customer_ID"
+      ],
+      "right_key": [
+        "Customer_Ids"
+      ],
+      "right_select": [
+        "Customer_Name",
+        "Customer_Type",
+        "Industry_and_Genre"
+      ]
+    }
+  },
+  "Inventory": {
+    "action": "edgemart",
+    "parameters": {
+      "alias": "PS_Inventory_1"
+    }
+  }
+}
