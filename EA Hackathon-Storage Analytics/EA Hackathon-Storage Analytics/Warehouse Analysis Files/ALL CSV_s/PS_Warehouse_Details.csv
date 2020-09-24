@@ -1,0 +1,6 @@
+﻿Region,WarehouseID,Warehouse Name,Total Free Space(Pallet),Total Storage Capacity (Pallet),Total Occupied Space(Pallet)
+West,WWE1001,Denver,358700,804000,445300
+Midwest,WMW1001,Pierre,334600,732800,398200
+Northeast,WNE1001,Boston,421500,866400,444900
+Southwest,WSW1001,Tucson,410000,788000,378000
+Southeast,WSE1001,Atlanta,456000,882400,426400

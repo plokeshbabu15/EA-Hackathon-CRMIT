@@ -1,0 +1,23 @@
+﻿Customer Type,Customer Name,Industry and Genre,Customer Ids
+Food Retailers,Wegmans,SuperMarkets,RETAILER1001
+Food Retailers,Publix,SuperMarkets,RETAILER1002
+Food Retailers,Trader Joe's,SuperMarkets,RETAILER1011
+Food Retailers,Costco,SuperMarkets,RETAILER1012
+Food Retailers,Aldi,SuperMarkets,RETAILER1013
+Food Retailers,Health and Happiness,Public Shops,RETAILER1003
+Food Retailers,Fresh and Frozen,Public Shops,RETAILER1004
+Food Retailers,7-Eleven,Public Shops,RETAILER1014
+Food Retailers,Kroger,Public Shops,RETAILER1015
+Food Service Providers,Per Se,Restaurants,SERVICEPROVIDER1005
+Food Service Providers,Atera,Restaurants,SERVICEPROVIDER1006
+Food Service Providers,Masa,Restaurants,SERVICEPROVIDER1007
+Food Service Providers,Daniel,Restaurants,SERVICEPROVIDER1016
+Food Service Providers,Oriole,Restaurants,SERVICEPROVIDER1017
+Food Service Providers,McDonald's,Fast Food Center,SERVICEPROVIDER1008
+Food Service Providers,Starbucks,Fast Food Center,SERVICEPROVIDER1009
+Food Service Providers,Domino's,Fast Food Center,SERVICEPROVIDER1010
+Food Service Providers,Burger King,Fast Food Center,SERVICEPROVIDER1018
+Food Service Providers,Mccafe Coffee Day,Fast Food Center,SERVICEPROVIDER1019
+Food Service Providers,KFC,Fast Food Center,SERVICEPROVIDER1020
+Food Manufacturer,Texas,Fermers,PRODUCER1021
+Food Manufacturer,FOOD�SERVICES OF�AMERICA,Vendors,PRODUCER1022
